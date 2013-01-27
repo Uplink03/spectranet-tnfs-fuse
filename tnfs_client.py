@@ -36,7 +36,7 @@ def getCstr(data, pos):
 	return string, pos + len(string) + 1
 
 def fullPath(cwd, path):
-	result = os.path.normpath(cwd[1:] + "/" + path) if path[0] != "/" else path
+	result = os.path.normpath(cwd + "/" + path) if path[0] != "/" else path
 
 	## http://stackoverflow.com/questions/7816818/why-doesnt-os-normapath-collapse-a-leading-double-slash
 	## It doesn't hurt having a double slash, but it looks ugly and inconsistent, so we clean it up
