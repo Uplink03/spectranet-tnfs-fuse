@@ -738,6 +738,7 @@ class Session(object):
 	def __init__(self, address):
 		self.setSession(None)
 		self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		self.sock.settimeout(30)
 		self.address = (socket.gethostbyname(address[0]), address[1])
 		self.sequence = 0
 
@@ -968,6 +969,8 @@ if __name__ == "__main__":
 					cwd = fullPath(cwd, path)
 				else:
 					print "Syntax: cd <path>"
+			elif command[0] == "pwd":
+				print cwd
 			elif command[0] == "mkdir":
 				if len(command) == 2:
 					path = fullPath(cwd, command[1])
